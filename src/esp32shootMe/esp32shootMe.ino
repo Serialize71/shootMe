@@ -1,15 +1,15 @@
 #include <WiFi.h>
 
 // Replace with your network credentials
-const char* ssid = "Ashen One";
-const char* password = "Ser2005XSS";
+const char* ssid = "##Ashen"; //wifi name
+const char* password = "##Ser200"; //pass
 WiFiUDP udp;
-const unsigned int localPort = 20056;
+const unsigned int localPort = 20056; 
 
 // Variables to store received data
 float x1_pos, y1_pos, x2_pos, y2_pos, score, class_id, actualX, actualY, centerX, centerY;
-int x_thrish = 320;
-int y_thrish = 240;
+int x_thresh = 320;
+int y_thresh = 240;
 void setup() {
     Serial.begin(115200);
     WiFi.begin(ssid, password);
@@ -44,17 +44,7 @@ void loop() {
         }
     }
 
-  // Real work 
-  // int roundedX = round(actualX);
-  // Serial.println("Rounded actualX: " + String(roundedX));
-
-  // if (roundedX > 320) {
-  //   digitalWrite(21, HIGH);
-  //   Serial.println("myActualX is: " + String(actualX) + " -> GPIO 21: HIGH");
-  // } else {
-  //   digitalWrite(21, LOW);
-  //   Serial.println("myActualX is: " + String(actualX) + " -> GPIO 21: LOW");
-  // }
+ 
 }
 
 // Parse the received string and assign to variables
@@ -107,13 +97,13 @@ void Work(){
   int roundedX = round(actualX);
   int roundedY = round(actualY);
   
-  if (roundedX > x_thrish) {
+  if (roundedX > x_thresh) {
     digitalWrite(26, HIGH);
   } 
   else{
     digitalWrite(26 , LOW);
   }
-  if(roundedY < y_thrish){
+  if(roundedY < y_thresh){
     digitalWrite(25 , HIGH);
   }
   else{
